@@ -1,0 +1,301 @@
+{
+  "name": "Task Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a concise and efficient AI assistant integrated with Google Sheets.\n\nYour responsibilities include: ￼\n\n• Providing brief, precise answers without repeating questions.\n\n• Accessing and interpreting data from the connected Google Sheet.\n\n• Identifying tasks based on their status and due dates.\n\n• Highlighting overdue tasks and those approaching their deadlines. ￼\n\n• Offering actionable suggestions for task completion. ￼\n\nMaintain a professional tone and focus on delivering clear, actionable insights.\n\nHere is the request from the user: {{ $json.messages[0].text.body }}\n\nToday is: {{ $now }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d38c1928-fdaa-4d4d-84ab-fad7b12ccd2a",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        64,
+        240
+      ],
+      "id": "16b5f37e-de22-488f-a2cf-46212249a30a",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "pKTHkIg8rltBorhF",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1eP21gqwV3IfRma28xNCY39qil7IokL0rb5Rd-CYLvo4/edit?gid=569756928#gid=569756928",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 569756928,
+          "mode": "list",
+          "cachedResultName": "Tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1eP21gqwV3IfRma28xNCY39qil7IokL0rb5Rd-CYLvo4/edit#gid=569756928"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        576,
+        240
+      ],
+      "id": "ea384219-a899-42f2-a3d1-0117f7abdee6",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pYeNsM0zp4zxXIv1",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.contacts[0].wa_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        240
+      ],
+      "id": "5a705e3b-85b4-4126-aa73-5be96a228483",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1eP21gqwV3IfRma28xNCY39qil7IokL0rb5Rd-CYLvo4/edit?gid=569756928#gid=569756928",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 569756928,
+          "mode": "list",
+          "cachedResultName": "Tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1eP21gqwV3IfRma28xNCY39qil7IokL0rb5Rd-CYLvo4/edit#gid=569756928"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Task": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Task', ``, 'string') }}",
+            "Status": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Status', ``, 'string') }}",
+            "Due date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Due_date', ``, 'string') }}",
+            "Notes": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Notes', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Task"
+          ],
+          "schema": [
+            {
+              "id": "Task",
+              "displayName": "Task",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Due date",
+              "displayName": "Due date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        400,
+        240
+      ],
+      "id": "85deb23e-245b-408c-9656-f2f97ae09cc3",
+      "name": "Append or update row in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pYeNsM0zp4zxXIv1",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5514e93f-c74b-4221-bdc1-6e678321a1d0",
+      "name": "WhatsApp Trigger",
+      "webhookId": "1a884b0b-6135-42c9-a20b-ca8cca988baf",
+      "credentials": {
+        "whatsAppTriggerApi": {
+          "id": "CRiESKApG3KDpJAX",
+          "name": "WhatsApp OAuth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "796143990243491",
+        "recipientPhoneNumber": "={{ $('WhatsApp Trigger').item.json.contacts[0].wa_id }}",
+        "textBody": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        560,
+        0
+      ],
+      "id": "fdcc7377-8adf-4033-9472-8460b8deab97",
+      "name": "Send message",
+      "webhookId": "cfa51c64-f1dd-4d02-be50-0fa985939e76",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "pmGWSTaF13jDW3CI",
+          "name": "WhatsApp account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "43a7c02e-700e-4bf6-a10c-fcc504035b66",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "801f08d0f6aece507ab910a49112b2ad6f2296e0c802b6b368238779be6dd37d"
+  },
+  "id": "CGd6c4mFTxEUsKI2",
+  "tags": []
+}
