@@ -1,0 +1,387 @@
+{
+  "name": "Customer Support Workfloew",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "22f470be-62a4-4c5e-acaf-23323e0c3e13",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "vkegM9hIiH88wgk8",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.text }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Customer Support",
+              "description": "=An email that related to helping out customer. They maybe asking about questions about our policies or questions about our products or services"
+            },
+            {
+              "category": "Others",
+              "description": "Any emails that is not customer support related"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "905397d2-1a4a-4470-a4fa-0e0b87e02033",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        144,
+        208
+      ],
+      "id": "ce2cb27d-6705-416b-a908-b792029a40cc",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "pKTHkIg8rltBorhF",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        480,
+        160
+      ],
+      "id": "f1e2b8d4-4faf-4742-aea9-46faad5932f8",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "content": "# Customer Support Workflow",
+        "height": 80,
+        "width": 496
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        464,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "a97400e4-61db-4492-aa14-5c479fe89cd3",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Gmail Trigger').item.json.text }}",
+        "options": {
+          "systemMessage": "=# Overview\nyou are a customer support agent for Rathinam Technical Campus. your job is to respond to the emails with relevent to information using your knowledge tool.\n\n## Instructions\n- your output should be friendly and use emoji\n- Sign off as Mr. Ranjith Kumar S from rathinam technical campus\n\n## output \n- output only the body content of the email"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        736,
+        -16
+      ],
+      "id": "4020b5ee-641f-436a-b3e5-61677a0e3bd3",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        720,
+        160
+      ],
+      "id": "ff3bed41-dfcb-497f-addd-0c9c31807edc",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "pKTHkIg8rltBorhF",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Call this tool to access policy and FAQ information",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "rgpipeline",
+          "mode": "list",
+          "cachedResultName": "rgpipeline"
+        },
+        "options": {
+          "pineconeNamespace": "FAQ"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        928,
+        192
+      ],
+      "id": "60722740-34e2-4ed6-937e-816971eea971",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "wUx3ztOj1cjjVZ4V",
+          "name": "PineconeApi account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        832,
+        368
+      ],
+      "id": "9fec07c7-05af-4d8c-83ce-26c65c985d0a",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "pKTHkIg8rltBorhF",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "emailType": "text",
+        "message": "={{ $json.output }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1168,
+        -16
+      ],
+      "id": "2c8fa82a-c065-4bde-b0fc-2660de1433c1",
+      "name": "Reply to a message",
+      "webhookId": "e524ae70-6b45-43a0-a1ad-b42fb4b4eba7",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "vkegM9hIiH88wgk8",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Gmail Trigger": [
+      {
+        "json": {
+          "id": "198de808be90f232",
+          "threadId": "198de808be90f232",
+          "labelIds": [
+            "IMPORTANT",
+            "CATEGORY_PERSONAL",
+            "INBOX"
+          ],
+          "sizeEstimate": 5703,
+          "headers": {
+            "delivered-to": "Delivered-To: lazarus0231@gmail.com",
+            "received": "Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])\r\n        by mx.google.com with SMTPS id a640c23a62f3a-afe7053e16csor51800066b.14.2025.08.24.16.53.42\r\n        for <lazarus0231@gmail.com>\r\n        (Google Transport Security);\r\n        Sun, 24 Aug 2025 16:53:42 -0700 (PDT)",
+            "x-received": "X-Received: by 2002:a17:907:2d13:b0:afe:808b:5c95 with SMTP id\r\n a640c23a62f3a-afe808b8a84mr119559166b.40.1756079621794; Sun, 24 Aug 2025\r\n 16:53:41 -0700 (PDT)",
+            "arc-seal": "ARC-Seal: i=1; a=rsa-sha256; t=1756079622; cv=none;\r\n        d=google.com; s=arc-20240605;\r\n        b=ZpMyGO2/tJmDhp1YkJA/jVEayJ9yMo0gupyr85W93hpF3yTTxA0j7k/MPHF2JBZX4M\r\n         sGU3LIuCs3cAJrvGIvezLXBeUMPN5CaNaqlFJrOnlAXb19dcO8KguSIo1FhETITGNPQR\r\n         OFtNrkQNwEZiHzJH5vEoRRNuDon/36uOjRWU+HFSspyLOctzjKFSkxXaFFdxSym4WiCT\r\n         Lg0rNFEQBQWPSHu6+vqGQQs1zVIkahfuFSxOV6cQyPymUTVKohM2WbXGQLJzywbkIbA+\r\n         edsE8EW8HsldbD0bRI5URsa0G5LiX/lAD8mGH4UE7c9VBm/YfrMdovn9R7trmd91fiO6\r\n         8sVg==",
+            "arc-message-signature": "ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;\r\n        h=to:subject:message-id:date:from:mime-version:dkim-signature;\r\n        bh=jzwaglGP+vxWu63h6bZba3KLdZuAGvGcVis1Y18bSPw=;\r\n        fh=4q5jCF+IyG0ZTkniqV75XVSMQYf37HtA1uvMWRLUrCE=;\r\n        b=DzgejXgkOm+iVKycdQgbf8lWseeAoj0GpL/0jMVRwHvdAv/s3HsFmrZc6bXIIDKtcU\r\n         s57n7C1Ap1epwUfsqhc8Feu1pSrWepCNlOOqCcdePujvei6RtAy9/7jUonO8gOxz3PjG\r\n         1KKisgQFL50PrmHvzevR4zcra0cbuDAmbHlEe7j0PPxLW+MqXXjabX9htbPPwXhGo0Ps\r\n         LTT/DD+T+xbvNRzhmHg9cE3ogWz/AEWCu6hcrSxJqRYtg2BUzbMpXTaNL3JdH+Nt/lVc\r\n         bSOZizXfPTwt7qYbD6010XztbxM+NScZowE7jC4yB6A9bCqpXeDOdiAmnRSQVfo1oX68\r\n         vwTg==;\r\n        dara=google.com",
+            "arc-authentication-results": "ARC-Authentication-Results: i=1; mx.google.com;\r\n       dkim=pass header.i=@gmail.com header.s=20230601 header.b=H1yioepm;\r\n       spf=pass (google.com: domain of aizozy2005@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=aizozy2005@gmail.com;\r\n       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;\r\n       dara=pass header.i=@gmail.com",
+            "return-path": "Return-Path: <aizozy2005@gmail.com>",
+            "received-spf": "Received-SPF: pass (google.com: domain of aizozy2005@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;",
+            "authentication-results": "Authentication-Results: mx.google.com;\r\n       dkim=pass header.i=@gmail.com header.s=20230601 header.b=H1yioepm;\r\n       spf=pass (google.com: domain of aizozy2005@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=aizozy2005@gmail.com;\r\n       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;\r\n       dara=pass header.i=@gmail.com",
+            "dkim-signature": "DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;\r\n        d=gmail.com; s=20230601; t=1756079622; x=1756684422; dara=google.com;\r\n        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject\r\n         :date:message-id:reply-to;\r\n        bh=jzwaglGP+vxWu63h6bZba3KLdZuAGvGcVis1Y18bSPw=;\r\n        b=H1yioepmOLWUrwuyYZ7Wwpha4be0U7ZBOiwZqQ4Xi+HhHlWKyofnGEeY0x6hOqzlMh\r\n         +Bt9Sq4GrdvnK9dx9O1A+QFbQ3gDxlg2IxyJDwIIcBmzfsxlKyQzT2bt1Zam/Jarcftg\r\n         nAvxJSl+N41G3L/bqWZGY6lq3hCoO4k2m+yhyPpT+DfObhks95RSB110SWkjZmFOtkmg\r\n         htKWvL1zL+RoTfdVdIm+TnofUw4rk9KopGmodRKbHRrIO4Q09NSxSglB5Q4QT+93BV/Y\r\n         zq5uZMRuoE//fiIpmgxLERfEZ+hNI/QUaAY6d3zWqCm5Wwa3HuuHufWOUwAI+OE/H8eo\r\n         zi4g==",
+            "x-google-dkim-signature": "X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;\r\n        d=1e100.net; s=20230601; t=1756079622; x=1756684422;\r\n        h=to:subject:message-id:date:from:mime-version:x-gm-message-state\r\n         :from:to:cc:subject:date:message-id:reply-to;\r\n        bh=jzwaglGP+vxWu63h6bZba3KLdZuAGvGcVis1Y18bSPw=;\r\n        b=d9sHV6USGDfy1CLVpzQIeWnpII3/H0pdCpvL0kLFStXGJav7hxDLsC1eqpmxCgYORR\r\n         EXgonh+t/NuhjhLZrF/tIF5QalyvfEpJMsu2qSlVLQq70u8+7QCUb98WU1QsL6zNL3pq\r\n         1vZArBI8X6v/nU14c2NCfU0AsgwKAZVZ/ADFxfCLMe8i+NBhtvelI/XwGYEtfnsbSd9K\r\n         wJR/xhj2BDVjuPrrsu5uBeR+ZdWJW9s5qEZsu70j7bYBZPgOq3Uvn2/4ZhbguLsvLT7U\r\n         7c3eh2B0io90Mj5Mv8UUyq/dbv0UoQAGgjYSAOhhOdnQpsudSXVUYOTKQ2Tj2rRMY/Yz\r\n         4eVA==",
+            "x-gm-message-state": "X-Gm-Message-State: AOJu0YxZqZ4eKsIOBFyns+UX1nCLIb1H2mNH8SVFIVrmTWiqKfI1Dsbb\r\n\teM4Cfnz/jJFSvZgPhBkH1MtYZlSgYLbxo+/ZpKBRYfqKp6JZgeY+lFKVLA95pvQdBh1jxRvUXkq\r\n\t1vQEnraVzX7OhwdWm9BeFEWn+TC4J9OdmLQ==",
+            "x-gm-gg": "X-Gm-Gg: ASbGnctOpLhe/xz8wl/onyVbrpEEAdmB8PV2XYdmr1xM08MwYyZzx4nyU8ojRaMF8SD\r\n\tKGr3ApyH0ZYCofDMrQPuReEuWVjW5SiCqbXbtj8wj1sY98WFsXHUl2nvaSxYL+uLba1po6dl7Uz\r\n\tesF1UxOzBywv1tklgftd7JqfNJu0jtspQ0L9KlO6YK0cWk3igYpjXmqRKlhh0qoN65gnmBldul5\r\n\tvouhSSmeQ==",
+            "x-google-smtp-source": "X-Google-Smtp-Source: AGHT+IH8ZXqPVU0WfL5bF1sOKzMnhl4h22BgW8T34y3cHW8gqK6BkDWzCLEUoJlanMECTfEU9ABb6wXt7AcNEtvb7ts=",
+            "mime-version": "MIME-Version: 1.0",
+            "from": "From: \"Ranjith Kumar.S\" <aizozy2005@gmail.com>",
+            "date": "Date: Mon, 25 Aug 2025 05:23:30 +0530",
+            "x-gm-features": "X-Gm-Features: Ac12FXzchtxxlV7UWbkHMgCuXEkbm0oRmPOX392AFxGPd4YZkH1-7hIFKJ_klEY",
+            "message-id": "Message-ID: <CAKr2WAHa9BKmBZWaOhWmH9G-Gr+BPcdBUn2T7sJn3cu6D702MA@mail.gmail.com>",
+            "subject": "Subject: privacy concerns",
+            "to": "To: Ranjith Kumar S <lazarus0231@gmail.com>",
+            "content-type": "Content-Type: multipart/alternative; boundary=\"0000000000000df0ed063d252624\""
+          },
+          "html": "<div dir=\"ltr\">What are the privacy concerns regarding your acces and password</div>\n",
+          "text": "What are the privacy concerns regarding your acces and password\n",
+          "textAsHtml": "<p>What are the privacy concerns regarding your acces and password</p>",
+          "subject": "privacy concerns",
+          "date": "2025-08-24T23:53:30.000Z",
+          "to": {
+            "value": [
+              {
+                "address": "lazarus0231@gmail.com",
+                "name": "Ranjith Kumar S"
+              }
+            ],
+            "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">Ranjith Kumar S</span> &lt;<a href=\"mailto:lazarus0231@gmail.com\" class=\"mp_address_email\">lazarus0231@gmail.com</a>&gt;</span>",
+            "text": "\"Ranjith Kumar S\" <lazarus0231@gmail.com>"
+          },
+          "from": {
+            "value": [
+              {
+                "address": "aizozy2005@gmail.com",
+                "name": "Ranjith Kumar.S"
+              }
+            ],
+            "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">Ranjith Kumar.S</span> &lt;<a href=\"mailto:aizozy2005@gmail.com\" class=\"mp_address_email\">aizozy2005@gmail.com</a>&gt;</span>",
+            "text": "\"Ranjith Kumar.S\" <aizozy2005@gmail.com>"
+          },
+          "messageId": "<CAKr2WAHa9BKmBZWaOhWmH9G-Gr+BPcdBUn2T7sJn3cu6D702MA@mail.gmail.com>"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Reply to a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "cdc17918-016c-4245-91cc-eac62162ebf9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "801f08d0f6aece507ab910a49112b2ad6f2296e0c802b6b368238779be6dd37d"
+  },
+  "id": "1EK1K1ZdmyLXkezY",
+  "tags": []
+}
