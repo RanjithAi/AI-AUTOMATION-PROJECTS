@@ -5,20 +5,27 @@ This project is an AI-powered **customer support automation workflow** built wit
 ---
 
 ## 🔹 Features
-📩 **Gmail Trigger (via GCP)** → Capture incoming support emails  
-🧾 **Text Classifier (OpenAI)** → Identify support requests vs. other emails  
-🤖 **AI Agent (OpenAI Chat Model)** → Generate intelligent responses  
-📚 **Pinecone + OpenAI Embeddings** → Retrieve policy & FAQ knowledge  
-✅ **Automation** → Label and reply to emails instantly  
+- 📩 **Gmail Trigger (via GCP)** → Capture incoming support emails  
+- 🧾 **Text Classifier (OpenAI)** → Identify support requests vs. other emails  
+- 🤖 **AI Agent (OpenAI Chat Model)** → Generate intelligent responses  
+- 📚 **Pinecone + OpenAI Embeddings** → Retrieve policy & FAQ knowledge  
+- ✅ **Automation** → Label and reply to emails instantly  
 
 ---
 
 ## 🔹 Workflow Overview
-1. **Trigger (Gmail)** – Fetch incoming customer emails  
-2. **Text Classifier (OpenAI)** – Categorize email type  
-3. **AI Agent (OpenAI)** – Draft smart, contextual replies  
-4. **Pinecone Search** – Retrieve FAQ/policy info with embeddings  
-5. **Reply via Gmail** – Send automated customer response  
+
+### 1️⃣ n8n Workflow
+![Workflow Screenshot](./DATA%201.png)
+
+### 2️⃣ Gmail Trigger Setup in GCP
+![Gmail Trigger](./DATA%202.png)
+
+### 3️⃣ Pinecone Vector Database for FAQ Storage
+![Pinecone DB](./DATA%203.png)
+
+### 4️⃣ OpenAI Chat Model Node
+![OpenAI Chat Model](./DATA%204.png)
 
 ---
 
@@ -56,3 +63,4 @@ This project is an AI-powered **customer support automation workflow** built wit
 ---
 
 ⭐ If this project helps you, don’t forget to **star this repo** and share your feedback!  
+
