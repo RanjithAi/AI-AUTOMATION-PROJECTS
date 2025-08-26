@@ -15,7 +15,8 @@ This project is an **AI-powered LinkedIn content automation workflow** built wit
 ### 1️⃣ n8n Workflow
 
 <img width="1358" height="759" alt="WORKFLOW" src="https://github.com/user-attachments/assets/a5eb7948-ac82-408c-b5d7-7f486ba21599" />
-### 2️⃣ Google Sheet with Topics & Content
+
+## 2️⃣ Google Sheet with Topics & Content
 
 <img width="1357" height="677" alt="GOOGLE_SHEET" src="https://github.com/user-attachments/assets/eaf2be06-f373-4d3a-abcc-f070dc692194" />
 
