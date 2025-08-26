@@ -22,7 +22,27 @@ It converts natural language into tasks, retrieves pending items on demand, and 
 5. **WhatsApp Response** – Sends confirmation or task list back to user  
 
 ---
+## 🔹 Screenshots
 
+📌 Workflow Overview 
+![Task Automation](https://github.com/user-attachments/assets/5ced2ed7-90e9-4773-8421-90ec0e441c24)
+
+
+📌 Task Creation in WhatsApp 
+
+![Task Automation1](https://github.com/user-attachments/assets/13b311ea-3dcd-46ea-a265-fd05cd0cd4a8)
+
+
+📌 Task Storage in Google Sheets  
+
+<img width="1363" height="681" alt="TASKS EXCEL" src="https://github.com/user-attachments/assets/9c4a524d-3a52-41ab-82ed-2a47470fcc7f" />
+
+---
+## 🔹 Demo Video
+
+https://github.com/user-attachments/assets/04b79219-e88e-4da1-a548-d7601ee2a7d1
+
+---
 ## 🔹 Tech Stack
 - **n8n** (workflow automation)  
 - **OpenAI** (language understanding + task extraction)  
