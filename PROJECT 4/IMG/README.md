@@ -31,7 +31,9 @@ This project is an AI-powered **customer support automation workflow** built wit
 ![image url](./RECEIVED_MAIL.png)
 
 ---
+## 🎥 Demo Video  
 
+---
 ## 🔹 Tech Stack
 - **n8n (workflow automation)**  
 - **OpenAI (LLMs + embeddings)**  
