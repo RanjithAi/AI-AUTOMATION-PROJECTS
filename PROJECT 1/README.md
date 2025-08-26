@@ -32,6 +32,29 @@ Built with **n8n, Pinecone, OpenAI, and Google Drive**, it enables **chatting wi
 
 ---
 
+## 🔹 Visuals
+
+📂 Input Document  
+
+<img width="1359" height="678" alt="DOCUMENT" src="https://github.com/user-attachments/assets/e0c89ed0-e7a2-478a-9038-a71bb3568c0d" />
+
+📚 Pinecone Vector Database 
+
+<img width="1356" height="683" alt="PINECONE PAGE1" src="https://github.com/user-attachments/assets/353bab1d-741b-4fac-a39d-a2015069424f" />
+
+<img width="1360" height="682" alt="PINECONE PAGE2" src="https://github.com/user-attachments/assets/920dff62-8b2a-49bc-b9e4-9cdab2880698" />
+
+⚡ Workflow Overview (n8n) 
+
+<img width="1182" height="607" alt="AI Document " src="https://github.com/user-attachments/assets/91945a9a-31a3-4067-bd52-e143545afb34" />
+
+---
+
+## 🔹 Demo Video
+
+https://github.com/user-attachments/assets/a7e9c330-09f0-4b30-af98-10f32291a0b5
+
+---
 ## 🔹 Use Cases
 - Create a **searchable knowledge base** from PDFs & docs  
 - Build **AI-powered Q&A bots** for company data  
