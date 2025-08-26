@@ -38,7 +38,8 @@ This project is an AI-powered **customer support automation workflow** built wit
 ---
 ## 🎥 Demo Video  
 
-https://github.com/user-attachments/assets/3ac6c339-0441-4b6d-8592-1a0d0feeb707
+
+https://github.com/user-attachments/assets/dc123092-adb6-4bf5-b221-b360856b41c1
 
 ---
 ## 🔹 Tech Stack
