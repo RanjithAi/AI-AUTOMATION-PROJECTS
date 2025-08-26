@@ -16,19 +16,19 @@ This project is an AI-powered **customer support automation workflow** built wit
 ## 🔹 Workflow Overview
 
 ### 1️⃣ Full n8n Workflow
-![Workflow Screenshot](./workflow.png)
+![image url](./WORKFLOW.png)
 
 ### 2️⃣ Text Classifier Node (OpenAI)
-![Text Classifier](./text_classifier.png)
+![image url](./TEXT_CLASSIFIER.png)
 
 ### 3️⃣ AI Agent Node (OpenAI Chat Model)
-![AI Agent](./ai_agent.png)
+![image url](./AI_AGENT.png)
 
 ### 4️⃣ Pinecone Vector Database Setup
-![Pinecone Vector DB](./pinecone.png)
+![image url](./PINECONE.png)
 
 ### 5️⃣ Gmail Trigger & Received Mail
-![Gmail Screenshot](./gmail.png)
+![image url](./RECEIVED_MAIL.png)
 
 ---
 
