@@ -27,7 +27,7 @@ This project is an **AI-powered LinkedIn content automation workflow** built wit
 ---
 ## 🎥 Demo Video
 
-[Watch the demo video](./DEMO.mp4)
+[Watch the demo video](https://github.com/RanjithAi/AI-AUTOMATION-PROJECTS/blob/c1658066f71fb4a5041395ea9ecbd35693d4d049/PROJECT%205/IMG/DEMO.mp4)
 
 ---
 
