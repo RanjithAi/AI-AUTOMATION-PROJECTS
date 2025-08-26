@@ -27,17 +27,19 @@ This project is an AI-driven **blog automation workflow** built with Google Opal
 
 ### 1️⃣ Workflow in Google Opal 
 
+<img width="1356" height="678" alt="GOOGLE OPAL" src="https://github.com/user-attachments/assets/4b4e2ed0-ac92-4661-98e1-525b5f4131ae" />
 
 ### 2️⃣ AI-Generated Blog Draft  
 
- 
+ <img width="1365" height="620" alt="PAGE1" src="https://github.com/user-attachments/assets/c8d71535-04fe-4d1b-9be9-e7f49071fac2" />
 
 ### 3️⃣ AI Image Prompt Output  
 
-
+<img width="1365" height="681" alt="PAGE2" src="https://github.com/user-attachments/assets/6ec3cb8c-a6b6-4aed-969c-b9efcd019669" />
 
 ### 4️⃣ Final Compiled Blog Page  
 
+<img width="1363" height="677" alt="PAGE 3" src="https://github.com/user-attachments/assets/8f9f109a-e83e-4ed0-b251-ce099323a55d" />
 
 ---
 
