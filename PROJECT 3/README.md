@@ -23,6 +23,30 @@ This project is an AI-driven **blog automation workflow** built with Google Opal
 
 ---
 
+## 📸 Screenshots  
+
+### 1️⃣ Workflow in Google Opal 
+
+
+### 2️⃣ AI-Generated Blog Draft  
+
+ 
+
+### 3️⃣ AI Image Prompt Output  
+
+
+
+### 4️⃣ Final Compiled Blog Page  
+
+
+---
+
+## 🎥 Demo Video  
+
+https://github.com/user-attachments/assets/f57491bc-7941-4c2a-9eb9-684cc707e82a
+
+---
+
 ## 🔹 Tech Stack
 - **Google Opal** (AI Workflow Tool)  
 - **OpenAI / LLMs** for research & content writing  
@@ -51,4 +75,3 @@ This project is an AI-driven **blog automation workflow** built with Google Opal
 
 👉 Discussion:  
 Do you see **AI as a co-pilot in content creation**, or do you feel it risks losing the human touch?  
-
