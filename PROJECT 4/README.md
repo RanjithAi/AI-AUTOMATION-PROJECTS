@@ -16,22 +16,29 @@ This project is an AI-powered **customer support automation workflow** built wit
 ## 🔹 Workflow Overview
 
 ### 1️⃣ Full n8n Workflow
-![image url](./WORKFLOW.png)
+
+<img width="1231" height="573" alt="WORKFLOW" src="https://github.com/user-attachments/assets/83316511-01b8-4cbf-a98c-aee616eaf33a" />
 
 ### 2️⃣ Text Classifier Node (OpenAI)
-![image url](./TEXT_CLASSIFIER.png)
+
+<img width="1364" height="686" alt="TEXT_CLASSIFIER" src="https://github.com/user-attachments/assets/f4e41da6-9bdf-4931-bb06-ea4438e840f7" />
 
 ### 3️⃣ AI Agent Node (OpenAI Chat Model)
-![image url](./AI_AGENT.png)
+
+<img width="1351" height="692" alt="AI_AGENT" src="https://github.com/user-attachments/assets/57f09c8a-bf6c-4861-ac1b-7145faade7c6" />
 
 ### 4️⃣ Pinecone Vector Database Setup
-![image url](./PINECONE.png)
+
+<img width="1343" height="686" alt="PINECONE" src="https://github.com/user-attachments/assets/40c860a5-4877-4191-b836-c00a2d767b3d" />
 
 ### 5️⃣ Gmail Trigger & Received Mail
-![image url](./RECEIVED_MAIL.png)
+
+<img width="774" height="546" alt="RECIEVED_MAIL" src="https://github.com/user-attachments/assets/453e482b-21bc-4e42-9729-709a3e8d6113" />
 
 ---
 ## 🎥 Demo Video  
+
+https://github.com/user-attachments/assets/3ac6c339-0441-4b6d-8592-1a0d0feeb707
 
 ---
 ## 🔹 Tech Stack
