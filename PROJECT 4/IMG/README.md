@@ -15,17 +15,20 @@ This project is an AI-powered **customer support automation workflow** built wit
 
 ## 🔹 Workflow Overview
 
-### 1️⃣ n8n Workflow
-![Workflow Screenshot](./DATA%201.png)
+### 1️⃣ Full n8n Workflow
+![Workflow Screenshot](./workflow.png)
 
-### 2️⃣ Gmail Trigger Setup in GCP
-![Gmail Trigger](./DATA%202.png)
+### 2️⃣ Text Classifier Node (OpenAI)
+![Text Classifier](./text_classifier.png)
 
-### 3️⃣ Pinecone Vector Database for FAQ Storage
-![Pinecone DB](./DATA%203.png)
+### 3️⃣ AI Agent Node (OpenAI Chat Model)
+![AI Agent](./ai_agent.png)
 
-### 4️⃣ OpenAI Chat Model Node
-![OpenAI Chat Model](./DATA%204.png)
+### 4️⃣ Pinecone Vector Database Setup
+![Pinecone Vector DB](./pinecone.png)
+
+### 5️⃣ Gmail Trigger & Received Mail
+![Gmail Screenshot](./gmail.png)
 
 ---
 
@@ -63,4 +66,3 @@ This project is an AI-powered **customer support automation workflow** built wit
 ---
 
 ⭐ If this project helps you, don’t forget to **star this repo** and share your feedback!  
-
