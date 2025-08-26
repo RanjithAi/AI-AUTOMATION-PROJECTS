@@ -19,10 +19,15 @@ This project is an **AI-powered LinkedIn content automation workflow** built wit
 ![Google Sheet](./GOOGLE_SHEET.png)
 
 ### 3️⃣ Google Sheets API (Enabled in Google Cloud)
-![Google Sheets API](./GOOGLW_SHEETAPI.png)
+![Google Sheets API](./GOOGLE_SHEETAPI.png)
 
 ### 4️⃣ OpenAI Chat Model Node in n8n
 ![image url](./OPENAI_MODEL.png)
+
+---
+## 🎥 Demo Video
+
+[Watch the demo video](./DEMO.mp4)
 
 ---
 
