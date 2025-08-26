@@ -8,12 +8,23 @@ This project is an **AI-powered LinkedIn content automation workflow** built wit
 - 🤖 **AI Agent (OpenAI Chat Model)** → Generate intelligent LinkedIn content drafts  
 - 🔄 **Automation** → Update final content back into Google Sheets  
 
+---
+
 ## 🔹 Workflow Overview
-1. **Trigger** – Run the workflow manually or on a schedule  
-2. **Google Sheets** – Reads content ideas  
-3. **Tavily API** – Gathers relevant insights and research  
-4. **AI Agent (OpenAI)** – Generates content using prompt + context  
-5. **Update Sheets** – Stores the generated LinkedIn post  
+
+### 1️⃣ n8n Workflow
+![Workflow Screenshot](./workflow.png)
+
+### 2️⃣ Google Sheet with Topics & Content
+![Google Sheet](./sheet.png)
+
+### 3️⃣ Google Sheets API (Enabled in Google Cloud)
+![Google Sheets API](./gsheet_api.png)
+
+### 4️⃣ OpenAI Chat Model Node in n8n
+![OpenAI Chat Model](./openai_model.png)
+
+---
 
 ## 🔹 Tech Stack
 - [n8n](https://n8n.io) (workflow automation)  
@@ -21,11 +32,7 @@ This project is an **AI-powered LinkedIn content automation workflow** built wit
 - [Tavily API](https://tavily.com)  
 - [OpenAI](https://platform.openai.com)  
 
-## 🔹 Use Cases
-- Automating LinkedIn content creation  
-- Research + draft generation for social media posts  
-- Example workflow for learning **AI + Automation**  
-
+---
 
 ## 🔹 How to Use
 1. Clone this repo  
@@ -43,3 +50,4 @@ This project is an **AI-powered LinkedIn content automation workflow** built wit
 ---
 
 ⭐ If you found this helpful, don’t forget to **star this repo**!  
+
