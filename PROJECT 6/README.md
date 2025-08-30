@@ -15,8 +15,10 @@ I recently built an **end-to-end invoice automation workflow** using **n8n**, Go
 - ⚡ **n8n** (workflow automation)  
 - 📂 **Google Drive + Google Sheets**  
 - 🤖 **OpenAI** for smart email generation  
-- 📧 **Gmail API**  
+- 📧 **Gmail API**
+  
 ---
+
 ## 📸 Screenshots  
 Here are some workflow screenshots:  
  
@@ -29,7 +31,9 @@ Here are some workflow screenshots:
 <img width="654" height="310" alt="Screenshot 2025-08-26 212744" src="https://github.com/user-attachments/assets/d5d3a248-6b0c-4c17-b71d-344913c71c1b" />
 
 <img width="1097" height="584" alt="Screenshot 2025-08-30 190605" src="https://github.com/user-attachments/assets/af7b1d06-dbd6-471a-97bb-857e5342e91f" />
+
 ---
+
 ## 🎥 Demo Video  
 Check out the demo in action:  
   
