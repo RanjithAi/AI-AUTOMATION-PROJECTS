@@ -19,12 +19,7 @@ I recently built an **end-to-end invoice automation workflow** using **n8n**, Go
 ---
 ## 📸 Screenshots  
 Here are some workflow screenshots:  
-
-![Database Update](screenshots/db-update.png)  
-![Email Example](screenshots/email.png)  
-
-
-
+ 
 <img width="1238" height="693" alt="Screenshot 2025-08-26 212630" src="https://github.com/user-attachments/assets/c0e40733-45ae-440a-96f8-cf8344507c1f" />
 
 <img width="1344" height="669" alt="Screenshot 2025-08-26 212710" src="https://github.com/user-attachments/assets/42366474-f48f-43c0-91dc-1d97bf947cff" />
@@ -37,9 +32,7 @@ Here are some workflow screenshots:
 ---
 ## 🎥 Demo Video  
 Check out the demo in action:  
-
-[▶️ Watch the demo](demo/demo.mp4)  
-
+  
 
 https://github.com/user-attachments/assets/aabcb092-137a-4f9d-bdaa-4ea3e9576c65
 
