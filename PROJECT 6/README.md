@@ -1,7 +1,7 @@
 # 🚀 Automating Invoice Processing with n8n + AI  
 
 I recently built an **end-to-end invoice automation workflow** using **n8n**, Google Drive, Google Sheets, and AI.  
-
+---
 ## 📌 How It Works  
 - 🔹 When a new **invoice PDF** is uploaded to Google Drive, the workflow is triggered.  
 - 🔹 The file is automatically processed to **extract key details** (Invoice No, Client Info, Amount, Due Date, etc.).  
@@ -10,21 +10,20 @@ I recently built an **end-to-end invoice automation workflow** using **n8n**, Go
 - 🔹 The email (with invoice details + database link) is sent instantly via Gmail.  
 
 💡 This automation **eliminates manual data entry, reduces errors, and ensures invoices are tracked in real-time**.  
-
+---
 ## 🛠️ Tools & Technologies Used  
 - ⚡ **n8n** (workflow automation)  
 - 📂 **Google Drive + Google Sheets**  
 - 🤖 **OpenAI** for smart email generation  
 - 📧 **Gmail API**  
-
+---
 ## 📸 Screenshots  
 Here are some workflow screenshots:  
 
 ![Database Update](screenshots/db-update.png)  
 ![Email Example](screenshots/email.png)  
 
-## 🎥 Demo Video  
-Check out the demo in action:  
+
 
 <img width="1238" height="693" alt="Screenshot 2025-08-26 212630" src="https://github.com/user-attachments/assets/c0e40733-45ae-440a-96f8-cf8344507c1f" />
 
@@ -35,14 +34,16 @@ Check out the demo in action:
 <img width="654" height="310" alt="Screenshot 2025-08-26 212744" src="https://github.com/user-attachments/assets/d5d3a248-6b0c-4c17-b71d-344913c71c1b" />
 
 <img width="1097" height="584" alt="Screenshot 2025-08-30 190605" src="https://github.com/user-attachments/assets/af7b1d06-dbd6-471a-97bb-857e5342e91f" />
-
+---
+## 🎥 Demo Video  
+Check out the demo in action:  
 
 [▶️ Watch the demo](demo/demo.mp4)  
 
 
 https://github.com/user-attachments/assets/aabcb092-137a-4f9d-bdaa-4ea3e9576c65
 
-
+---
 
 ## 🎯 Key Learnings  
 This project gave me hands-on experience with:  
